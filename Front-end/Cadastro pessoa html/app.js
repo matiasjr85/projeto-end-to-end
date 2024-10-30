@@ -1,10 +1,10 @@
 async function fetchPessoas() {
     try {
-        const response = await fetch("http://localhost:3000/api/pessoas"); // Atualize a porta se necessário
+        const response = await fetch("http://localhost:3000/api/pessoas");
         if (response.ok) {
             const pessoas = await response.json();
             const lista = document.getElementById("pessoa-lista");
-            lista.innerHTML = ""; // Limpa a lista para evitar duplicações
+            lista.innerHTML = "";
 
             pessoas.forEach(pessoa => {
                 const item = document.createElement("li");
@@ -21,17 +21,14 @@ async function fetchPessoas() {
 fetchPessoas();
 
 document.getElementById("cadastroForm").addEventListener("submit", async function(event) {
-    event.preventDefault(); // Impede o comportamento padrão de recarregar a página
-
-    // Coleta os valores dos campos do formulário
+    event.preventDefault();
+    
     const nome = document.getElementById("nome").value;
     const idade = document.getElementById("idade").value;
-
-    // Cria o objeto a ser enviado
+    
     const dados = { nome, idade };
 
-    try {
-        // Faz uma requisição POST para o endpoint da API
+    try {        
         const resposta = await fetch("http://localhost:3000/api/cadastro", {
             method: "POST",
             headers: {
@@ -39,8 +36,7 @@ document.getElementById("cadastroForm").addEventListener("submit", async functio
             },
             body: JSON.stringify(dados)
         });
-
-        // Verifica se a resposta foi bem-sucedida
+        
         if (resposta.ok) {
             const respostaJson = await resposta.json();
             alert(respostaJson.message);
