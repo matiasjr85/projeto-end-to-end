@@ -40,6 +40,16 @@ app.post("/api/cadastro", (req, res) => __awaiter(void 0, void 0, void 0, functi
         res.status(500).json({ message: "Erro ao cadastrar pessoa." });
     }
 }));
+app.get("/api/pessoas", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const pessoas = yield Pessoa_1.default.find();
+        res.status(200).json(pessoas);
+    }
+    catch (error) {
+        console.error("Erro ao buscar pessoas:", error);
+        res.status(500).json({ message: "Erro ao buscar pessoas." });
+    }
+}));
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 });

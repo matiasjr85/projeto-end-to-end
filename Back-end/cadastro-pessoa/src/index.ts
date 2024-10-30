@@ -17,8 +17,6 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
-
-
 app.use(express.json());
 app.options('*', cors());
 
@@ -33,6 +31,16 @@ app.post("/api/cadastro", async (req: Request, res: Response) => {
   } catch (error) {
     console.error("Erro ao cadastrar pessoa:", error);
     res.status(500).json({ message: "Erro ao cadastrar pessoa." });
+  }
+});
+
+app.get("/api/pessoas", async (req: Request, res: Response) => {
+  try {
+    const pessoas = await Pessoa.find();
+    res.status(200).json(pessoas);
+  } catch (error) {
+    console.error("Erro ao buscar pessoas:", error);
+    res.status(500).json({ message: "Erro ao buscar pessoas." });
   }
 });
 
