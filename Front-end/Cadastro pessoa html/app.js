@@ -82,7 +82,7 @@ async function atualizarCompleto(id) {
 
         if (response.ok) {
             alert("Atualização completa realizada com sucesso!");
-            fetchPessoas(); // Atualiza a lista
+            fetchPessoas(); 
         } else {
             console.error("Erro ao atualizar pessoa");
         }
@@ -103,7 +103,7 @@ async function deletarPessoa(id) {
 
             if (response.ok) {
                 alert("Pessoa deletada com sucesso!");
-                fetchPessoas(); // Atualiza a lista
+                fetchPessoas(); 
             } else {
                 alert("Erro ao deletar pessoa.");
             }

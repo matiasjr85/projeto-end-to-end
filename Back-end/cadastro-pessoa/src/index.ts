@@ -47,8 +47,7 @@ app.get("/api/pessoas", async (req: Request, res: Response) => {
 
 app.patch("/api/pessoas/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
-  const atualizacoes = req.body; // Dados que queremos atualizar parcialmente
-
+  const atualizacoes = req.body;
   try {
     const pessoaAtualizada = await Pessoa.findByIdAndUpdate(id, atualizacoes, { new: true });
     if (pessoaAtualizada) {
@@ -64,7 +63,7 @@ app.patch("/api/pessoas/:id", async (req: Request, res: Response) => {
 
 app.put("/api/pessoas/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
-  const dadosCompletos = req.body; // Dados completos para substituir o documento
+  const dadosCompletos = req.body; 
 
   try {
     const pessoaAtualizada = await Pessoa.findOneAndReplace({ _id: id }, dadosCompletos, { new: true });
