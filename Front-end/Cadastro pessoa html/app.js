@@ -39,8 +39,7 @@ async function atualizarParcial(id) {
     const nome = prompt("Digite o novo nome (ou deixe em branco para não alterar):");
     const idade = prompt("Digite a nova idade (ou deixe em branco para não alterar):");
     
-    // Cria um objeto com os campos que foram preenchidos
-    const atualizacoes = {};
+        const atualizacoes = {};
     if (nome) atualizacoes.nome = nome;
     if (idade) atualizacoes.idade = idade;
 
@@ -53,7 +52,7 @@ async function atualizarParcial(id) {
 
         if (response.ok) {
             alert("Atualização parcial realizada com sucesso!");
-            fetchPessoas(); // Atualiza a lista
+            fetchPessoas();
         } else {
             console.error("Erro ao atualizar pessoa");
         }
