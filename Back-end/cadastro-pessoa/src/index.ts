@@ -1,5 +1,3 @@
-// src/index.ts
-
 import express from 'express';
 import mongoose from 'mongoose';
 import connectDB from './config/database';
@@ -21,7 +19,6 @@ app.use(cors({
 app.use(express.json());
 app.options('*', cors());
 
-// Usando as rotas definidas
 app.use('/api', pessoaRoutes);
 
 app.listen(PORT, () => {

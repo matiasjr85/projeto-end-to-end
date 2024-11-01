@@ -8,7 +8,12 @@ async function fetchPessoas() {
 
             pessoas.forEach(pessoa => {
                 const item = document.createElement("li");
-                item.textContent = `Nome: ${pessoa.nome}, Idade: ${pessoa.idade}`;
+                
+                const nomeIdade = document.createElement("p");
+                nomeIdade.textContent = `Nome: ${pessoa.nome}, Idade: ${pessoa.idade}`;
+
+                const buttonContainer = document.createElement("div");
+                buttonContainer.classList.add("button-container");
 
                 const patchButton = document.createElement("button");
                 patchButton.textContent = "Atualizar Parcial";
@@ -22,9 +27,12 @@ async function fetchPessoas() {
                 deleteButton.textContent = "Deletar";
                 deleteButton.onclick = () => deletarPessoa(pessoa._id);
 
-                item.appendChild(patchButton);
-                item.appendChild(putButton);
-                item.appendChild(deleteButton);
+                buttonContainer.appendChild(patchButton);
+                buttonContainer.appendChild(putButton);
+                buttonContainer.appendChild(deleteButton);
+
+                item.appendChild(nomeIdade);
+                item.appendChild(buttonContainer);
                 lista.appendChild(item);
             });
         } else {
